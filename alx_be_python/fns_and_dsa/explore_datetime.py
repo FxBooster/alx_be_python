@@ -1,14 +1,30 @@
-from datetime import datetime, timedelta
+def perform_operation(num1, num2, operation):
+    """
+    Perform a mathematical operation on two numbers.
 
-def display_current_datetime():
-    current_date = datetime.now()
-    print("Current date and time:", current_date.strftime("%Y-%m-%d %H:%M:%S"))
+    Args:
+        num1 (float or int): The first number.
+        num2 (float or int): The second number.
+        operation (str): The operation to perform ("add", "subtract", "multiply", "divide").
 
-def calculate_future_date():
-    days_to_add = int(input("Enter the number of days to add to the current date: "))
-    future_date = datetime.now() + timedelta(days=days_to_add)
-    print("Future date:", future_date.strftime("%Y-%m-%d"))
-
+    Returns:
+        float or str: The result of the operation, or an error message for invalid cases.
+    """
+    if operation == "add":
+        return num1 + num2
+    elif operation == "subtract":
+        return num1 - num2
+    elif operation == "multiply":
+        return num1 * num2
+    elif operation == "divide":
+        if num2 == 0:
+            return "Cannot divide by zero"
+        return num1 / num2
+    else:
+        return "Invalid operation"
 if __name__ == "__main__":
-    display_current_datetime()
-    calculate_future_date()
+    # Example tests
+    print(perform_operation(10, 5, "add"))      # 15
+    print(perform_operation(10, 5, "subtract")) # 5
+    print(perform_operation(10, 5, "multiply")) # 50
+    print(perform_operation(10, 0, "divide"))   # Cannot divide by zero
